@@ -11,8 +11,29 @@ import java.util.List;
 public class AccountServicioImpl implements AccountServicio{
     @Autowired
     private AccountRepositorio acountRepositorio;
+
     @Override
     public List<Cuenta> listarTodasLasCuetas() {
         return acountRepositorio.findAll();
+    }
+
+    @Override
+    public Cuenta guardarCuenta(Cuenta cuenta) {
+        return acountRepositorio.save(cuenta);
+    }
+
+    @Override
+    public Cuenta obtenerCuentaPorEmail(Long id) {
+        return acountRepositorio.findById(id).get();
+    }
+
+    @Override
+    public Cuenta actualizarCuenta(Cuenta cuenta) {
+        return acountRepositorio.save(cuenta);
+    }
+
+    @Override
+    public void eliminarCuenta(Long id) {
+        acountRepositorio.deleteById(id);
     }
 }

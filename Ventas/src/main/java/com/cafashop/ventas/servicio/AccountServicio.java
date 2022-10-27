@@ -5,5 +5,9 @@ import com.cafashop.ventas.entidad.Cuenta;
 import java.util.List;
 
 public interface AccountServicio {
-    public List<Cuenta> listarTodasLasCuetas();
+    List<Cuenta> listarTodasLasCuetas();
+    Cuenta guardarCuenta(Cuenta cuenta);
+    Cuenta obtenerCuentaPorEmail(Long id);
+    Cuenta actualizarCuenta(Cuenta cuenta);
+    void eliminarCuenta(Long id);
 }
