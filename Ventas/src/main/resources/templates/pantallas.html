@@ -23,7 +23,7 @@
 </nav>
 <div class="container">
     <div class="row">
-        <h1>Lista de cuentas</h1>
+        <h1>Lista de pantallas</h1>
     </div>
 
     <table class="table">
@@ -31,25 +31,24 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Email</th>
-            <th scope="col">Pass</th>
-            <th scope="col">Capacidad</th>
-            <th scope="col">FechaVence</th>
-            <th scope="col">Tipo</th>
+            <th scope="col">Fecha Inicio</th>
+            <th scope="col">Fecha Final</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Pin</th>
             <th scope="col">Acciones</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="cuenta : ${cuentas}">
-            <th scope="row" th:text="${cuenta.id}">1</th>
-            <td th:text="${cuenta.email}">email</td>
-            <td th:text="${cuenta.pass}">pass</td>
-            <td th:text="${cuenta.capacity}">capacity</td>
-            <td th:text="${cuenta.fechaVence}">pass</td>
-            <td th:text="${cuenta.type}">tipo</td>
+        <tr th:each="pantalla : ${pantallas}">
+            <th scope="row" th:text="${pantalla.id}">1</th>
+            <td th:text="${pantalla.email}">email</td>
+            <td th:text="${pantalla.fechaInicio}">pass</td>
+            <td th:text="${pantalla.fechaVence}">capacity</td>
+            <td th:text="${pantalla.name}">pass</td>
+            <td th:text="${pantalla.pin}">pass</td>
             <td>
-                <a th:href="@{/cuentas/editar/{id}(id=${cuenta.id})}" class="btn btn-info">Editar</a>
-                <a th:href="@{/cuentas/{id}(id=${cuenta.id})}" class="btn btn-danger">Eliminar</a>
-                <a th:href="@{/pantallas/{id}(id=${cuenta.email})}" class="btn btn-primary">Pantallas</a>
+                <a th:href="@{/cuentas/editar/{id}(id=${pantalla.id})}" class="btn btn-info">Editar</a>
+                <a th:href="@{/cuentas/{id}(id=${pantalla.id})}" class="btn btn-danger">Eliminar</a>
             </td>
         </tr>
         </tbody>

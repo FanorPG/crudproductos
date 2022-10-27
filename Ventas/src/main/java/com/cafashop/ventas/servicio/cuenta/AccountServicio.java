@@ -1,4 +1,4 @@
-package com.cafashop.ventas.servicio;
+package com.cafashop.ventas.servicio.cuenta;
 
 import com.cafashop.ventas.entidad.Cuenta;
 

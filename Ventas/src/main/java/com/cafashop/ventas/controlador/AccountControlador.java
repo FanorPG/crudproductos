@@ -1,7 +1,7 @@
 package com.cafashop.ventas.controlador;
 
 import com.cafashop.ventas.entidad.Cuenta;
-import com.cafashop.ventas.servicio.AccountServicio;
+import com.cafashop.ventas.servicio.cuenta.AccountServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,5 +58,6 @@ public class AccountControlador {
         accountServicio.eliminarCuenta(id);
         return "redirect:/cuentas";
     }
+
 
 }
