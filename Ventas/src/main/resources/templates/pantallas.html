@@ -12,7 +12,7 @@
 <body>
 <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" th:href="@{/cuentas}">Control de cuentas</a>
-    <a class="navbar-brand" th:href="@{/cuentas/nuevo}">Registrar cuenta</a>
+    <a class="navbar-brand" th:href="@{/pantallas/nuevo}">Registrar pantalla</a>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
             <li class="navbar-nav">
@@ -47,8 +47,9 @@
             <td th:text="${pantalla.name}">pass</td>
             <td th:text="${pantalla.pin}">pass</td>
             <td>
-                <a th:href="@{/cuentas/editar/{id}(id=${pantalla.id})}" class="btn btn-info">Editar</a>
-                <a th:href="@{/cuentas/{id}(id=${pantalla.id})}" class="btn btn-danger">Eliminar</a>
+                <a th:href="@{/pantallas/editar/{id}(id=${pantalla.id})}" class="btn btn-info">Editar</a>
+                <a th:href="@{/pantallas/eliminar/{id}(id=${pantalla.id})}" class="btn btn-danger">Eliminar</a>
+                <a th:href="@{/pantallas/entrega/{id}(id=${pantalla.id})}" target="_blank" type="button" class="btn btn-warning">Entregar</a>
             </td>
         </tr>
         </tbody>

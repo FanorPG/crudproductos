@@ -36,4 +36,9 @@ public class AccountServicioImpl implements AccountServicio{
     public void eliminarCuenta(Long id) {
         acountRepositorio.deleteById(id);
     }
+
+    @Override
+    public Cuenta obtenerCuentaPorEmail2(String email) {
+        return acountRepositorio.obteneCuentaPorEmail(email);
+    }
 }

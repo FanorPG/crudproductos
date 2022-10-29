@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.time.LocalDate;
+
 @Controller
 public class AccountControlador {
 
@@ -18,6 +20,8 @@ public class AccountControlador {
 
     @GetMapping({"/cuentas", "/"})
     public String listarCuentas(Model modelo) {
+        System.out.println("Horrrraaaaaa"+ LocalDate.now());
+        modelo.addAttribute("localDateTime", LocalDate.now().toString());
         modelo.addAttribute("cuentas", accountServicio.listarTodasLasCuetas());
         return "cuentas";
     }

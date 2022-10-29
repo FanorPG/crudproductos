@@ -10,4 +10,5 @@ public interface AccountServicio {
     Cuenta obtenerCuentaPorEmail(Long id);
     Cuenta actualizarCuenta(Cuenta cuenta);
     void eliminarCuenta(Long id);
+    Cuenta obtenerCuentaPorEmail2(String email);
 }

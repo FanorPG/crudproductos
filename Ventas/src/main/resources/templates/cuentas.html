@@ -22,7 +22,7 @@
     </div>
 </nav>
 <div class="container">
-    <div class="row">
+    <div>
         <h1>Lista de cuentas</h1>
     </div>
 
@@ -39,19 +39,36 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="cuenta : ${cuentas}">
-            <th scope="row" th:text="${cuenta.id}">1</th>
-            <td th:text="${cuenta.email}">email</td>
-            <td th:text="${cuenta.pass}">pass</td>
-            <td th:text="${cuenta.capacity}">capacity</td>
-            <td th:text="${cuenta.fechaVence}">pass</td>
-            <td th:text="${cuenta.type}">tipo</td>
-            <td>
-                <a th:href="@{/cuentas/editar/{id}(id=${cuenta.id})}" class="btn btn-info">Editar</a>
-                <a th:href="@{/cuentas/{id}(id=${cuenta.id})}" class="btn btn-danger">Eliminar</a>
-                <a th:href="@{/pantallas/{id}(id=${cuenta.email})}" class="btn btn-primary">Pantallas</a>
-            </td>
-        </tr>
+        <div th:each="cuenta : ${cuentas}">
+            <tr th:if="${cuenta.fechaVence} == ${localDateTime}" class="p-3 mb-2 bg-danger text-white">
+                <th scope="row" th:text="${cuenta.id}">1</th>
+                <td th:text="${cuenta.email}">email</td>
+                <td th:text="${cuenta.pass}">pass</td>
+                <td th:text="${cuenta.capacity}">capacity</td>
+                <td th:text="${cuenta.fechaVence}">Fecha</td>
+                <td th:text="${cuenta.type}">tipo</td>
+                <td>
+                    <a th:href="@{/cuentas/editar/{id}(id=${cuenta.id})}" class="btn btn-info">Editar</a>
+                    <a th:href="@{/cuentas/{id}(id=${cuenta.id})}" class="btn btn-danger">Eliminar</a>
+                    <a th:href="@{/pantallas/{id}(id=${cuenta.email})}" class="btn btn-primary">Pantallas</a>
+                </td>
+            </tr>
+            <tr th:if="${cuenta.fechaVence} != ${localDateTime}">
+                <th scope="row" th:text="${cuenta.id}">1</th>
+                <td th:text="${cuenta.email}">email</td>
+                <td th:text="${cuenta.pass}">pass</td>
+                <td th:text="${cuenta.capacity}">capacity</td>
+                <td th:if="${cuenta.fechaVence} != ${localDateTime}" th:text="${cuenta.fechaVence}">Fecha</td>
+                <td th:text="${cuenta.type}">tipo</td>
+                <td>
+                    <a th:href="@{/cuentas/editar/{id}(id=${cuenta.id})}" class="btn btn-info">Editar</a>
+                    <a th:href="@{/cuentas/{id}(id=${cuenta.id})}" class="btn btn-danger">Eliminar</a>
+                    <a th:href="@{/pantallas/{id}(id=${cuenta.email})}" class="btn btn-primary">Pantallas</a>
+                </td>
+            </tr>
+        </div>
+
+
         </tbody>
     </table>
 

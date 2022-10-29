@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Editar</title>
+    <title>Registro</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
           integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
@@ -24,9 +24,9 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-            <h1 class="text-center">Registro de cuenta</h1>
+            <h1 class="text-center">Registro de pantalla</h1>
             <div class="card-body">
-                <form th:action="@{/cuentas/{id}(id=${cuenta.id})}" th:object="${cuenta}" method="POST">
+                <form th:action="@{/pantallas}" th:object="${pantalla}" method="POST">
                     <div class="form-grup">
                         <label>
                             Email :
@@ -36,41 +36,39 @@
                     <br>
                     <div class="form-grup">
                         <label>
-                            Password :
+                            Fecha inicio :
                         </label>
-                        <input type="text" name="pass" th:field="*{pass}" class="form-control"
-                               placeholder="Contrasenia">
+                        <input type="date" name="fachaInicio" th:field="*{fechaInicio}" class="form-control"
+                               placeholder="Fecha Inicio">
                     </div>
                     <br>
                     <div class="form-grup">
                         <label>
-                            Capacidad :
-                        </label>
-                        <input type="number" name="capacity" th:field="*{capacity}" class="form-control"
-                               placeholder="Capacidad de pantallas">
-                    </div>
-                    <br>
-                    <div class="form-grup">
-                        <label>
-                            Fecha finaliza:
+                            Fecha vence :
                         </label>
                         <input type="date" name="fechaVence" th:field="*{fechaVence}" class="form-control"
-                               placeholder="Fecha finaliza membresia">
+                               placeholder="Fecha vence">
                     </div>
                     <br>
                     <div class="form-grup">
                         <label>
-                            Tipo de cuenta:
+                            Nombre :
                         </label>
-                        <input type="text" name="type" th:field="*{type}" class="form-control"
-                               placeholder="Fecha finaliza membresia">
+                        <input type="text" name="name" th:field="*{name}" class="form-control"
+                               placeholder="Nombre de perfil">
+                    </div>
+                    <br>
+                    <div class="form-grup">
+                        <label>
+                            Pin :
+                        </label>
+                        <input type="number" name="pin" th:field="*{pin}" class="form-control"
+                               placeholder="Pin">
                     </div>
                     <br>
                     <div class="box-footer">
                         <button class="tbn btn-success">Guardar</button>
-
                     </div>
-
                 </form>
             </div>
         </div>
