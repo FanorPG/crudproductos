@@ -65,6 +65,7 @@ public class PantallaControlador {
         pantalla1.setFechaInicio(pantalla.getFechaInicio());
         pantalla1.setName(pantalla.getName());
         pantalla1.setPin(pantalla.getPin());
+        pantalla1.setCel(pantalla.getCel());
         servicio.actualizarPantalla(pantalla1);
         return "redirect:/pantallas";
     }

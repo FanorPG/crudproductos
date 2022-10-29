@@ -26,4 +26,6 @@ public class Pantalla {
     private String fechaVence;
     @Column(name = "email")
     private String email;
+    @Column(name = "cel")
+    private String cel;
 }
