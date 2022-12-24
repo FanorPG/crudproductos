@@ -8,13 +8,15 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class PantallaServicioImpl implements PantallaServicio{
+public class PantallaServicioImpl implements PantallaServicio {
     @Autowired
     private PantallaRepositorio pantallaRepositorio;
+
     @Override
     public List<Pantalla> listarTodasLasPantallas() {
         return pantallaRepositorio.findAll();
     }
+
     @Override
     public Pantalla guardarPantalla(Pantalla cuenta) {
         return pantallaRepositorio.save(cuenta);

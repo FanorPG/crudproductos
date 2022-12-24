@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.time.LocalDate;
 
 @Controller
 public class PantallaControlador {
@@ -22,18 +25,24 @@ public class PantallaControlador {
 
     @GetMapping({"/pantallas"})
     public String listarPantallas(Model modelo) {
+        modelo.addAttribute("localDateTime", LocalDate.now().toString());
         modelo.addAttribute("pantallas", servicio.listarTodasLasPantallas());
         return "pantallas";
     }
+
     @GetMapping("/pantallas/{id}")
     public String mostrarPantallaDeCuenta(@PathVariable("id") String id, Model modelo) {
+        modelo.addAttribute("localDateTime", LocalDate.now().toString());
         modelo.addAttribute("pantallas", servicio.obtenerPantallasPorEmail(id));
         return "pantallas";
     }
 
     @PostMapping("/pantallas")
-    public String guardarPantalla(@ModelAttribute("pantalla") Pantalla pantalla) {
+    public String guardarPantalla(@ModelAttribute("pantalla") Pantalla pantalla, RedirectAttributes redirectAttrs) {
         servicio.guardarPantalla(pantalla);
+        redirectAttrs
+                .addFlashAttribute("mensaje", "Agregado correctamente")
+                .addFlashAttribute("clase", "success");
         return "redirect:/pantallas";
     }
 

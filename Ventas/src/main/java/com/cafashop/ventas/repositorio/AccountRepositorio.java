@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AccountRepositorio extends JpaRepository<Cuenta, Long> {
-    @Query(value = "SELECT * FROM account WHERE email=:email", nativeQuery=true)
+    @Query(value = "SELECT * FROM account WHERE email=:email", nativeQuery = true)
     Cuenta obteneCuentaPorEmail(String email);
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
 
@@ -20,7 +21,6 @@ public class AccountControlador {
 
     @GetMapping({"/cuentas", "/"})
     public String listarCuentas(Model modelo) {
-        System.out.println("Horrrraaaaaa"+ LocalDate.now());
         modelo.addAttribute("localDateTime", LocalDate.now().toString());
         modelo.addAttribute("cuentas", accountServicio.listarTodasLasCuetas());
         return "cuentas";
@@ -34,8 +34,11 @@ public class AccountControlador {
     }
 
     @PostMapping("/cuentas")
-    public String guardarCuenta(@ModelAttribute("cuenta") Cuenta cuenta) {
+    public String guardarCuenta(@ModelAttribute("cuenta") Cuenta cuenta, RedirectAttributes redirectAttrs) {
         accountServicio.guardarCuenta(cuenta);
+        redirectAttrs
+                .addFlashAttribute("mensaje", "Agregado correctamente")
+                .addFlashAttribute("clase", "success");
         return "redirect:/cuentas";
     }
 

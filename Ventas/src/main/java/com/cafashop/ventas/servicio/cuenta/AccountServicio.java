@@ -6,9 +6,14 @@ import java.util.List;
 
 public interface AccountServicio {
     List<Cuenta> listarTodasLasCuetas();
+
     Cuenta guardarCuenta(Cuenta cuenta);
+
     Cuenta obtenerCuentaPorEmail(Long id);
+
     Cuenta actualizarCuenta(Cuenta cuenta);
+
     void eliminarCuenta(Long id);
+
     Cuenta obtenerCuentaPorEmail2(String email);
 }

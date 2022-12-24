@@ -18,7 +18,7 @@ public class Cuenta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "email",length = 50)
+    @Column(name = "email", length = 50)
     private String email;
     @Column(name = "type")
     private String type;

@@ -11,16 +11,20 @@
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" th:href="@{/cuentas}">Control de cuentas</a>
-    <a class="navbar-brand" th:href="@{/cuentas/nuevo}">Registrar cuenta</a>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-            <li class="navbar-nav">
-                <a class="nav-link" th:href="@{/cuentas}">Control de cuentas</a>
-            </li>
-        </ul>
+    <a class="navbar-brand" th:href="@{/cuentas}">Inicio</a>
+
+    <div>
+        <a class="navbar-brand" th:href="@{/cuentas/nuevo}">Registrar cuenta</a>
+        <a class="navbar-brand" th:href="@{/pantallas/nuevo}">Registrar pantalla</a>
+        <a class="navbar-brand" th:href="@{/pantallas}">Pantallas</a>
     </div>
 </nav>
+
+<div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
+     th:text="${mensaje}"
+     class="alert">
+</div>
+
 <div class="container">
     <div>
         <h1>Lista de cuentas</h1>
@@ -53,7 +57,22 @@
                     <a th:href="@{/pantallas/{id}(id=${cuenta.email})}" class="btn btn-primary">Pantallas</a>
                 </td>
             </tr>
-            <tr th:if="${cuenta.fechaVence} != ${localDateTime}">
+
+            <tr th:if="${cuenta.fechaVence} < ${localDateTime}" class="p-3 mb-2 bg-secondary text-white">
+                <th scope="row" th:text="${cuenta.id}">1</th>
+                <td th:text="${cuenta.email}">email</td>
+                <td th:text="${cuenta.pass}">pass</td>
+                <td th:text="${cuenta.capacity}">capacity</td>
+                <td th:if="${cuenta.fechaVence} != ${localDateTime}" th:text="${cuenta.fechaVence}">Fecha</td>
+                <td th:text="${cuenta.type}">tipo</td>
+                <td>
+                    <a th:href="@{/cuentas/editar/{id}(id=${cuenta.id})}" class="btn btn-info">Editar</a>
+                    <a th:href="@{/cuentas/{id}(id=${cuenta.id})}" class="btn btn-danger">Eliminar</a>
+                    <a th:href="@{/pantallas/{id}(id=${cuenta.email})}" class="btn btn-primary">Pantallas</a>
+                </td>
+            </tr>
+
+            <tr th:if="${cuenta.fechaVence} > ${localDateTime}">
                 <th scope="row" th:text="${cuenta.id}">1</th>
                 <td th:text="${cuenta.email}">email</td>
                 <td th:text="${cuenta.pass}">pass</td>

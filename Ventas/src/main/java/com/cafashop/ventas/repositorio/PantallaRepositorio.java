@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface PantallaRepositorio extends JpaRepository<Pantalla, Long> {
-    @Query(value = "SELECT * FROM screen WHERE email=:email", nativeQuery=true)
+    @Query(value = "SELECT * FROM screen WHERE email=:email", nativeQuery = true)
     List<Pantalla> listaDePantallaDeCuenta(String email);
 }

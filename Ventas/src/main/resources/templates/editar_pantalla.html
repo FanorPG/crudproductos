@@ -26,7 +26,8 @@
         <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
             <h1 class="text-center">Registro de pantalla</h1>
             <div class="card-body">
-                <form th:action="@{/pantallas/actualizar/{id}(id=${pantalla.id})}" th:object="${pantalla}" method="POST">
+                <form th:action="@{/pantallas/actualizar/{id}(id=${pantalla.id})}" th:object="${pantalla}"
+                      method="POST">
                     <div class="form-grup">
                         <label>
                             Email :
